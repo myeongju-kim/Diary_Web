@@ -81,7 +81,7 @@ header {
   height:62px;
   background-size:cover;
   background-color: #FAFAFA;
-  background-image:url("../images/direction.png");
+  background-image:url("images/direction.png");
   border:0px;
 }
 #right{
@@ -90,8 +90,12 @@ header {
   height:62px;
   background-size:cover;
   background-color: #FAFAFA;
-  background-image:url("../images/direction2.png");
+  background-image:url("images/direction2.png");
   border:0px;
   float:right;
   right:7%;
+}
+a {
+  text-decoration: none;
+  color: black;
 }
