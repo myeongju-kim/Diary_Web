@@ -1,88 +1,48 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <title>킹명주일기장</title>
-    <link rel="stylesheet" type="text/css" href="home.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-    <script>
-        function list_write(){
-            Swal.fire({
-                icon: 'error',                   
-                title: '너.. 킹명주 아니잖아?',    
-                text: '내 일기장이야!! 나만 쓸거야', 
-                confirmButtonColor: '#00BFA6',
-            });
-            //var modal=document.getElementById("modal");
-            //modal.style.display='block';
-        }
-        function login(){
-            (async () => {
-                const { value: getName } = await Swal.fire({
-                    title: '킹명주의 군번을 입력해주세요',
-                    text: '질문은 랜덤입니다.',
-                    input: 'text',
-                    inputPlaceholder: '맞춰보셈',
-                    confirmButtonColor: '#00BFA6',
-                })
-            
-                // API 호출해야함
-               // if (getName)
-               Swal.fire({
-                icon: 'error',                   
-                title: '땡',    
-                confirmButtonColor: '#00BFA6',
-            });
-            })()
-        }
-        function intro(){ 
-            Swal.fire({
-                imageUrl: 'https://blog.kakaocdn.net/dn/bFRSfm/btrUs1QWAOA/SSl0ywWX60v2IXGRZRsqF1/img.png',
-                imageAlt: 'Custom image',
-                confirmButtonColor: '#00BFA6',
-            });
-
-        }
-    </script>
-</head>
-<body>
-    <header>
-        <img src="images/king.png" style="width: 76px; height: 76px;" id="icons">
-        <h1>킹명주's 취준일기</h1>
-        <nav>
-            <span onClick="login()">로그인</span>
-        </nav>
-    </header>
-    <div id="modal">
-    </div>
-    <div id="center">
-        <div id="menu">
-            <h1>메뉴</h1>
-            <div id="detail">
-                <img src="images/list_icon.png" id="icons">
-                <text id="menut">일기목록</text>
+    <head>
+        <meta charset="utf-8">
+        <title>킹명주일기장</title>
+        <link rel="stylesheet" type="text/css" href="home.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+        <script src="popup.js"> </script>
+    </head>
+    <body>
+        <header>
+            <img src="images/king.png" style="width: 76px; height: 76px;" id="icons">
+            <h1>킹명주's 취준일기</h1>
+            <nav>
+                <span onClick="login()">로그인</span>
+            </nav>
+        </header>
+        <div id="center">
+            <div id="menu">
+                <h1>메뉴</h1>
+                <div id="detail">
+                    <img src="images/list_icon.png" id="icons">
+                    <text id="menut">일기목록</text>
+                </div>
+                <div id="detail" onClick="list_write()">                    
+                    <img src="images/write_icon.png" id="icons">
+                    <text id="menut">일기작성</text>
+                </div>
+                <div id="detail">
+                    <img src="images/me_icon.png" id="icons">
+                    <text id="menut" onClick=" intro()">킹명주소개</text>
+                </div>
             </div>
-            <div id="detail" onClick="list_write()">                    
-                <img src="images/write_icon.png" id="icons">
-                <text id="menut">일기작성</text>
-            </div>
-            <div id="detail">
-                <img src="images/me_icon.png" id="icons">
-                <text id="menut" onClick=" intro()">킹명주소개</text>
+            <div id="list">
+                <button id="diary"></button>
+                <button id="diary"></button>
+                <button id="diary"></button>
+                <button id="diary"></button>
+                <button id="diary"></button>
+                <button id="diary"></button>
+                <div id="next">
+                    <button id="left"></button>
+                    <button id="right"></button>
+                </div>
             </div>
         </div>
-        <div id="list">
-            <button id="diary"></button>
-            <button id="diary"></button>
-            <button id="diary"></button>
-            <button id="diary"></button>
-            <button id="diary"></button>
-            <button id="diary"></button>
-            <div id="next">
-                <button id="left"></button>
-                <button id="right"></button>
-            </div>
-        </div>
-    </div>
-</body>
+    </body>
 </html>
