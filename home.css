@@ -13,8 +13,8 @@
 body{
   background-color: #FAFAFA;
   margin: 0;
-  
 }
+
 header {  
   height: 75px;
   padding: 1rem;
@@ -65,12 +65,13 @@ header {
 #list{
   position:relative;
   left:34%;
-  height:550px;
+  height:630px;
   top:-230px;
   width:890px;
 }
 #diary{
   border-radius: 15px;
+  float:left;
   width:250px;
   height:250px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -79,9 +80,21 @@ header {
   margin-bottom: 41px;
   margin-right: 41px;
 }
+#diary1{
+  border-radius: 15px;
+  float:left;
+  width:250px;
+  height:250px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background-color:white;
+  border:0px;
+  margin-bottom: 41px;
+  margin-right: 41px;
+  display:none;
+}
 #next{
-  position: relative;
-  top:-20px;
+  position: absolute;
+  bottom:0px;
   width:95%;
 }
 #left{
@@ -118,4 +131,47 @@ a {
   backdrop-filter: blur(1.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+#date{
+  display:none;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  color: #A7A7A7;
+  font-weight: bold;
+  font-size:20px;
+  font-family: 'KyoboHand';
+}
+#state{
+  padding-left:1rem;
+}
+#weather{
+  width: 47px;
+  height: 47px;
+  margin-right:1rem;
+}
+#mood{
+  position: relative;
+  top:-5px;
+  width: 32px;
+  height: 32px;
+}
+#title{
+  display:none;
+  padding: 1.2rem;
+  font-family: 'KyoboHand';
+  font-weight: bold;
+  font-size:25px;
+}
+#rec{
+  display:none;
+  padding: 0.5rem;
+}
+#like{
+  width: 40px;
+  height: 40px;
+}
+#dislike{
+  float:right;
+  width: 40px;
+  height: 40px;
 }

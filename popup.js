@@ -39,3 +39,29 @@ function intro(){
     });
 
 }
+function like(type){
+    if(type==1){
+        var icon="success";
+        var text= "추천 감사합니다~";
+    }
+    else{
+        var icon="warning"
+        var text= "응~ 비추는 반영 안돼~";
+    }
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'center-center',
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: icon,
+        title: text,
+      })
+}

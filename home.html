@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
         <script src="popup.js"> </script>
+        <script src="list.js"> </script>
     </head>
     <body>
         <header>
@@ -32,12 +33,20 @@
                 </div>
             </div>
             <div id="list">
-                <button id="diary"></button>
-                <button id="diary"></button>
-                <button id="diary"></button>
-                <button id="diary"></button>
-                <button id="diary"></button>
-                <button id="diary"></button>
+                <div id="diary" onclick="detail(3)">
+                    <div id="date"></div>
+                    <div id="state"></div>
+                    <div id="title"></div>
+                    <div id="rec">
+                        <img id="like" src="images/like.png" onclick="like(1)">
+                        <img id="dislike" src="images/dislike.png" onclick="like(2)">
+                    </div>
+                </div>
+                <div id="diary1"></div>
+                <div id="diary1"></div>
+                <div id="diary1"></div>
+                <div id="diary1"></div>
+                <div id="diary1"></div>
                 <div id="next">
                     <button id="left"></button>
                     <button id="right"></button>
