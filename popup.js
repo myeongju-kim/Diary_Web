@@ -1,3 +1,24 @@
+function set_cookie(name, value, miuntes){
+    const exdate = new Date();
+    exdate.setMinutes(exdate.getMinutes() + miuntes);
+    const cookie_value = value + '; expires=' + exdate.toUTCString();
+    document.cookie = name + '=' + cookie_value;
+    console.log(name+'='+cookie_value)
+    console.log(documnet.cookie)
+}
+function get_cookie(name) {
+    var x, y;
+    var val = document.cookie.split(';');
+  
+    for (var i = 0; i < val.length; i++) {
+      x = val[i].substr(0, val[i].indexOf('='));
+      y = val[i].substr(val[i].indexOf('=') + 1);
+      x = x.replace(/^\s+|\s+$/g, ''); 
+      if (x == name) {
+        return y; 
+      }
+    }
+  }
 function list_write(){
     Swal.fire({
         icon: 'error',        
@@ -20,14 +41,30 @@ function login(){
             confirmButtonColor: '#00BFA6',
         })
     
-        // API 호출해야함
-    // if (getName)
-    Swal.fire({
-        icon: 'error',                  
-        backdrop:false, 
-        title: '땡',    
-        confirmButtonColor: '#00BFA6',
-    });
+    // API 호출해야함
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/accounts/login',
+        type: 'POST',
+        dataType: 'json',
+        contentType: "application/json",
+        data: JSON.stringify({
+            "type": 0,
+            "answer": getName
+        }),
+        success: function(data){
+            const dataJson = JSON.stringify(data)
+            const token=JSON.parse(dataJson).result.token
+            set_cookie("token", token, 30)
+        },
+        error:function(request,status,error){
+            Swal.fire({
+                icon: 'error',                  
+                backdrop:false, 
+                title: '땡',    
+                confirmButtonColor: '#00BFA6',
+            });
+        }
+    })
     })()
 }
 function intro(){ 
