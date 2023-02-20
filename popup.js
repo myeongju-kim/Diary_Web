@@ -17,20 +17,31 @@ function get_cookie(name) {
       }
     }
   }
+function save(){
+    document.getElementById("memo").style.display="none";
+
+}
 function list_write(){
-    document.getElementById("memo").style.display="block";
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/accounts/login',
+        type: 'GET',
+        headers:{
+            'Authorization': get_cookie("token"),
+        },
+        success: function(data){
+            document.getElementById("memo").style.display="block";
+        },
+        error:function(request,status,error){
+            Swal.fire({
+                icon: 'error',        
+                backdrop:false,
+                title: '너.. 킹명주 아니잖아?',    
+                text: '내 일기장이야!! 나만 쓸거야', 
+                confirmButtonColor: '#00BFA6',
+            });
+        }
+    })
 
-
-    /*
-    Swal.fire({
-        icon: 'error',        
-        backdrop:false,
-        title: '너.. 킹명주 아니잖아?',    
-        text: '내 일기장이야!! 나만 쓸거야', 
-        confirmButtonColor: '#00BFA6',
-    });
-    //var modal=document.getElementById("modal");
-    //modal.style.display='block';*/
 }
 function login(){
     (async () => {
