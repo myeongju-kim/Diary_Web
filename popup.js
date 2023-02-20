@@ -18,7 +18,7 @@ function get_cookie(name) {
     }
   }
 function list_write(){
-    
+    document.getElementById("memo").style.display="block";
 
 
     /*

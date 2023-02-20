@@ -225,3 +225,12 @@ a {
   font-size:25px;
 }
 
+#memo{
+  display: none;
+  position:relative;
+  top:-120%;
+  left:30%;
+  width:600px;
+  height:600px;
+  background-color: rgb(196, 233, 140);
+}
