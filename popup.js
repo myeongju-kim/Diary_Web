@@ -18,6 +18,10 @@ function get_cookie(name) {
     }
   }
 function list_write(){
+    
+
+
+    /*
     Swal.fire({
         icon: 'error',        
         backdrop:false,
@@ -26,7 +30,7 @@ function list_write(){
         confirmButtonColor: '#00BFA6',
     });
     //var modal=document.getElementById("modal");
-    //modal.style.display='block';
+    //modal.style.display='block';*/
 }
 function login(){
     (async () => {
@@ -52,7 +56,6 @@ function login(){
             const dataJson = JSON.stringify(data)
             const token=JSON.parse(dataJson).result.token
             set_cookie("token", token, 30)
-            document.write(get_cookie("token"));
         },
         error:function(request,status,error){
             Swal.fire({
