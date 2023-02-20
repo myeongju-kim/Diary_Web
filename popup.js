@@ -3,8 +3,6 @@ function set_cookie(name, value, miuntes){
     exdate.setMinutes(exdate.getMinutes() + miuntes);
     const cookie_value = value + '; expires=' + exdate.toUTCString();
     document.cookie = name + '=' + cookie_value;
-    console.log(name+'='+cookie_value)
-    console.log(documnet.cookie)
 }
 function get_cookie(name) {
     var x, y;
@@ -35,7 +33,6 @@ function login(){
         const { value: getName } = await Swal.fire({
             title: '킹명주의 군번을 입력해주세요',
             backdrop:false,
-            text: '질문은 랜덤입니다.',
             input: 'text',
             inputPlaceholder: '맞춰보셈',
             confirmButtonColor: '#00BFA6',
@@ -55,6 +52,7 @@ function login(){
             const dataJson = JSON.stringify(data)
             const token=JSON.parse(dataJson).result.token
             set_cookie("token", token, 30)
+            document.write(get_cookie("token"));
         },
         error:function(request,status,error){
             Swal.fire({
