@@ -1,6 +1,6 @@
 window.onload=function load(){
     $.ajax({
-        url: 'http://localhost:8080/api/v1/note?page=2',
+        url: 'http://localhost:8080/api/v1/note?page=0',
         type: 'GET',
         success: function(data){
             const dataJson = JSON.stringify(data)
@@ -29,6 +29,7 @@ window.onload=function load(){
                 var title=document.createElement("div")
                 title.setAttribute("id","title")
                 title.innerText=lists[i].title
+                diary.setAttribute("id",lists[i].id)
                 diary.appendChild(title)
             }
             
@@ -38,24 +39,43 @@ window.onload=function load(){
         }
     })
 }
-function detail(id){
-    document.body.style.background="rgba(0, 0, 0, 0.2)"
+function detail(diary){
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/note/'+$(diary).attr('id'),
+        type: 'GET',
+        success: function(data){
+            const dataJson = JSON.stringify(data)
+            const info=JSON.parse(dataJson).result
+            document.body.style.background="rgba(0, 0, 0, 0.2)"
 
-    var detail=document.getElementById("modal")
-    detail.style.display="block"
-
-    var exit=document.getElementById("exit")
-    exit.onclick=function(){
-        document.body.style.background="#FAFAFA"
-        detail.style.display="none"
-    }
-
-    var date2=document.getElementById("date2")
-    date2.innerText=temp[0]
-
-    var title2=document.getElementById("title2")
-    title2.innerText=temp_title
-
-    var content=document.getElementById("content")
-    content.innerText="내용쿠"+String(i)
+            var detail=document.getElementById("modal")
+            detail.style.display="block"
+        
+        
+            var exit=document.getElementById("exit")
+            exit.onclick=function(){
+                document.body.style.background="#FAFAFA"
+                detail.style.display="none"
+            }
+        
+            var date=document.getElementById("date2")
+            date.innerText=info.date
+        
+            var title=document.getElementById("title2")
+            title.innerText=info.title
+        
+            var content=document.getElementById("content")
+            content.innerText=info.content
+            
+        },
+        error:function(request,status,error){
+            Swal.fire({
+                icon: 'error',                  
+                backdrop:false, 
+                title: '불러올 수 없는 일기장입니다.',    
+                confirmButtonColor: '#00BFA6',
+            });
+        }
+    })
+    
 }
