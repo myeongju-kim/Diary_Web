@@ -35,7 +35,6 @@ window.onload=function load(){
             
         },
         error:function(request,status,error){
-          document.write(error);
         }
     })
 }
