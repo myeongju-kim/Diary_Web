@@ -1,51 +1,61 @@
 window.onload=function load(){
-    var diary=document.getElementById("diary");
-    
-    var date=document.getElementById("date");
-    date.innerText="2022-12-21\n14:54";
-    date.style.display="block";
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/note?page=2',
+        type: 'GET',
+        success: function(data){
+            const dataJson = JSON.stringify(data)
+            const lists=JSON.parse(dataJson).result
+            for(var i=0; i<lists.length; i++){
+                var diary=document.getElementById("d"+String(i))
+                diary.style.display="block"
+                var date=document.createElement("div")
+                var temp=lists[i].date.split(" ")
+                date.setAttribute("id","date")
+                date.innerText=temp[0]+"\n"+temp[1]
+                diary.appendChild(date)
 
-    var state=document.getElementById("state");
-    var weather=document.createElement("img");
-    var mood=document.createElement("img");
-    weather.id="weather";
-    weather.src="images/rain.png";
-    mood.id="mood";
-    mood.src="images/angry.png"
-    state.append(weather);
-    state.append(mood);
-    state.style.display="block";
+                var state=document.createElement("div")
+                state.setAttribute("id","state")
+                var weather=document.createElement("img");
+                var mode=document.createElement("img");
+                weather.setAttribute("id","weather")
+                weather.src="images/w"+lists[i].weather+".png"
+                mode.setAttribute("id","mode")
+                mode.setAttribute("src","images/m"+lists[i].mode+".png")
+                state.appendChild(weather);
+                state.appendChild(mode);
+                diary.appendChild(state)
 
-    var title=document.getElementById("title");
-    title.innerText="어디로 가야하오..?";
-    title.style.display="block";
-
-    var rec=document.getElementById("rec");
-    rec.style.display="block";
-    state.append(weather);
-    state.append(mood);
+                var title=document.createElement("div")
+                title.setAttribute("id","title")
+                title.innerText=lists[i].title
+                diary.appendChild(title)
+            }
+            
+        },
+        error:function(request,status,error){
+          document.write(error);
+        }
+    })
 }
 function detail(id){
-    var backg=document.getElementById("diary_block");
-    backg.style.display="block";
     document.body.style.background="rgba(0, 0, 0, 0.2)"
-    var diary=document.getElementById("modal");
-    diary.style.display="block";
 
-    var modal_date=document.getElementById("date2");
-    modal_date.innerText="2022-12-21";
+    var detail=document.getElementById("modal")
+    detail.style.display="block"
 
-    var modal_title=document.getElementById("title2");
-    modal_title.innerText="어디로 가야하오..?";
+    var exit=document.getElementById("exit")
+    exit.onclick=function(){
+        document.body.style.background="#FAFAFA"
+        detail.style.display="none"
+    }
 
-    var modal_content=document.getElementById("content");
-    modal_content.innerText="11월 부터는 확실히 채용을 거의 안한다.. ㅜㅜ 내년에는 기업들이 신입을 많이 뽑을까..?? 불안한 느낌도 있다.. 그리고 가장 고민되는 부분은 정말 내가 원하는 테마의 기업에만 도전하는 것과 현실을 고려해서 일단 다 원서를 때려박는 것 이 두가지가 고민된다..";
-   
-}
-function exit(){
-    var backg=document.getElementById("diary_block");
-    backg.style.display="none";
-    document.body.style.background="#FAFAFA"
-    var diary=document.getElementById("modal");
-    diary.style.display="none";
+    var date2=document.getElementById("date2")
+    date2.innerText=temp[0]
+
+    var title2=document.getElementById("title2")
+    title2.innerText=temp_title
+
+    var content=document.getElementById("content")
+    content.innerText="내용쿠"+String(i)
 }
